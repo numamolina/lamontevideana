@@ -96,6 +96,7 @@
       font-family: 'Rubik', sans-serif;
       font-size: 2rem;
       font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #ffffff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -115,6 +116,39 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      margin-top: 0.9em;
+    }
+
+    /* Opción 1 — doble text-shadow difuso/glow */
+    .opt1 p.direccion {
+      text-shadow:
+        0 0 10px rgba(0,0,0,0.8),
+        0 0 5px rgba(0,0,0,0.9);
+    }
+
+    /* Opción 2 — degradado oscuro local detrás del texto */
+    .opt2 {
+      background: linear-gradient(
+        to left top,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0.22) 45%,
+        rgba(0,0,0,0) 100%
+      );
+      padding: 5px 16px;
+      border-radius: 4px;
+    }
+
+    /* Opción 3 — glassmorphism */
+    .opt3 {
+      padding: 10px 15px;
+      border-radius: 8px;
+      background-color: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .opt3 p.direccion {
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
     }
 
     .direccion-icon {
@@ -286,7 +320,34 @@
       />
       <br>
       <p class="hero-subtitulo">Corrientes</p>
-      <div class="direccion-wrap">
+      <!-- Dirección — 1: glow text-shadow -->
+      <div class="direccion-wrap opt1">
+        <svg class="direccion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <p class="direccion">
+          <a href="https://maps.app.goo.gl/M6Nd3cZTtaqS82JC7" target="_blank" rel="noopener">
+            Necochea 699 (esq. Guastavino)
+          </a>
+        </p>
+      </div>
+
+      <!-- Dirección — 2: degradado oscuro local -->
+      <div class="direccion-wrap opt2">
+        <svg class="direccion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <p class="direccion">
+          <a href="https://maps.app.goo.gl/M6Nd3cZTtaqS82JC7" target="_blank" rel="noopener">
+            Necochea 699 (esq. Guastavino)
+          </a>
+        </p>
+      </div>
+
+      <!-- Dirección — 3: glassmorphism -->
+      <div class="direccion-wrap opt3">
         <svg class="direccion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
           <circle cx="12" cy="10" r="3"/>
