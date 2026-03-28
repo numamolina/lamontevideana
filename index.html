@@ -15,7 +15,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Montserrat:wght@400;700;900&family=Nunito:wght@400;600&family=Rubik:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     /* ===== RESET ===== */
@@ -57,10 +57,10 @@
 
     /* ===== HERO / MAIN ===== */
     .hero {
-      flex: 1;             /* ocupa todo el espacio restante entre header y footer */
+      flex: 1;
       background-image: url('imagenes/background.jpg');
       background-size: cover;
-      background-position: center bottom; /* prioridad parte inferior */
+      background-position: center center; /* centrado, pierde por los costados (widescreen) */
       background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
@@ -106,9 +106,10 @@
     }
 
     p.direccion {
-      margin-top: 4em;      /* ~4 saltos de línea bajo el logo */
+      margin-top: 3em;      /* ~3 saltos bajo el logo */
+      font-family: 'Nunito', sans-serif;
       font-size: 1.05rem;
-      font-weight: 400;
+      font-weight: 600;
       line-height: 1.5;
       opacity: 0.95;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
@@ -129,7 +130,9 @@
     footer {
       background-color: #2c2c2c;
       color: #f0f0f0;
-      padding: 14px 40px;  /* mitad de alto */
+      position: relative;          /* necesario para el logo overlay */
+      padding: 14px 40px 14px 40px;
+      padding-top: 38px;           /* padding normal + mitad del logo (24px) */
     }
 
     .footer-inner {
@@ -146,19 +149,27 @@
     .footer-brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      padding-left: 58px; /* espacio para el logo posicionado absolutamente */
     }
 
+    /* Logo flotante: 50% por encima de la línea del footer */
     .footer-logo {
-      height: 36px;   /* logo más compacto acorde al footer reducido */
+      position: absolute;
+      top: 0;
+      left: 40px;
+      transform: translateY(-50%);
+      height: 48px;
       width: auto;
       object-fit: contain;
+      z-index: 10;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
     }
 
     .footer-brand-name {
-      font-family: 'Almendra Display', serif;
+      font-family: 'Rubik', sans-serif;
       font-size: 0.95rem;
-      font-weight: 400;
+      font-weight: 500;
       color: #ffffff;
       line-height: 1.3;
       max-width: 180px;
@@ -218,6 +229,13 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      h1.proximamente {
+        font-size: 1.5rem;
+        letter-spacing: 0.02em;
       }
     }
   </style>
