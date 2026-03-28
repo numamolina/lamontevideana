@@ -41,11 +41,6 @@
       width: 100%;
     }
 
-    .header-main {
-      height: 20px;
-      background-color: #2c2c2c;
-    }
-
     .header-stripe {
       height: 10px;
     }
@@ -92,9 +87,20 @@
       font-size: 3.5rem;
       font-weight: 900;
       letter-spacing: 0.05em;
-      margin-bottom: 24px;
+      margin-bottom: 6px;
       text-transform: uppercase;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitulo {
+      font-family: 'Rubik', sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
     }
 
     .hero-logo {
@@ -105,8 +111,22 @@
       filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
     }
 
+    .direccion-wrap {
+      margin-top: 3em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .direccion-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: rgba(255,255,255,0.85);
+    }
+
     p.direccion {
-      margin-top: 3em;      /* ~3 saltos bajo el logo */
       font-family: 'Nunito', sans-serif;
       font-size: 1.05rem;
       font-weight: 600;
@@ -119,7 +139,8 @@
 
     p.direccion a {
       color: #ffffff;
-      text-decoration: none; /* sin subrayado */
+      text-decoration: none;
+      cursor: pointer;
     }
 
     p.direccion a:hover {
@@ -130,9 +151,8 @@
     footer {
       background-color: #2c2c2c;
       color: #f0f0f0;
-      position: relative;          /* necesario para el logo overlay */
-      padding: 14px 40px 14px 40px;
-      padding-top: 38px;           /* padding normal + mitad del logo (24px) */
+      padding: 14px 40px;
+      overflow: visible;  /* permite que el logo sobresalga hacia arriba */
     }
 
     .footer-inner {
@@ -148,22 +168,25 @@
     /* -- Lado izquierdo -- */
     .footer-brand {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      padding-left: 58px; /* espacio para el logo posicionado absolutamente */
+      align-items: flex-end;  /* texto y logo alineados al fondo */
+      gap: 10px;
     }
 
-    /* Logo flotante: 50% por encima de la línea del footer */
+    /* Wrapper: solo ocupa 50% del logo en el footer, el resto sobresale arriba */
+    .footer-logo-wrap {
+      flex-shrink: 0;
+      height: 48px;         /* mitad del logo = parte visible dentro del footer */
+      display: flex;
+      align-items: flex-end;
+      overflow: visible;
+    }
+
     .footer-logo {
-      position: absolute;
-      top: 0;
-      left: 40px;
-      transform: translateY(-50%);
-      height: 48px;
+      display: block;
+      height: 96px;         /* doble de antes */
       width: auto;
       object-fit: contain;
-      z-index: 10;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.55));
     }
 
     .footer-brand-name {
@@ -244,7 +267,6 @@
 
   <!-- ======================== HEADER ======================== -->
   <header class="site-header">
-    <div class="header-main"></div>
     <div class="header-stripe stripe-1"></div>
     <div class="header-stripe stripe-2"></div>
     <div class="header-stripe stripe-3"></div>
@@ -256,17 +278,27 @@
   <main class="hero">
     <!-- Centro: título + logo + dirección -->
     <div class="hero-content">
+        <br><br>
       <h1 class="proximamente">Próximamente...</h1>
-      <img
+      <br>
+            <img
         class="hero-logo"
         src="imagenes/logo.png"
-        alt="Logo La Montevideana Corrientes"
+        alt="La Montevideana Corrientes"
       />
-      <p class="direccion">
-        <a href="https://maps.app.goo.gl/M6Nd3cZTtaqS82JC7" target="_blank" rel="noopener">
-          Necochea 699 (esq. Guastavino) — Corrientes — Argentina
-        </a>
-      </p>
+      <br>
+      <p class="hero-subtitulo">Corrientes</p>
+      <div class="direccion-wrap">
+        <svg class="direccion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <p class="direccion">
+          <a href="https://maps.app.goo.gl/M6Nd3cZTtaqS82JC7" target="_blank" rel="noopener">
+            Necochea 699 (esq. Guastavino)
+          </a>
+        </p>
+      </div>
     </div>
   </main>
 
@@ -274,13 +306,15 @@
   <footer>
     <div class="footer-inner">
 
-      <!-- Izquierdo: logo + nombre -->
+      <!-- Izquierdo: logo overlay + nombre -->
       <div class="footer-brand">
-        <img
-          class="footer-logo"
-          src="imagenes/logo.png"
-          alt="Logo La Montevideana"
-        />
+        <div class="footer-logo-wrap">
+          <img
+            class="footer-logo"
+            src="imagenes/logo.png"
+            alt="Logo La Montevideana"
+          />
+        </div>
         <span class="footer-brand-name">La Montevideana<br>Corrientes</span>
       </div>
 
